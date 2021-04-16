@@ -22,10 +22,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public ValidarUsuarioResponse verifica(ValidarUsuarioRequest validarUsuarioRequest) throws ResourceNotFoundException {
 
-        Usuario usuario = usuarioDao.findById(validarUsuarioRequest.getId());
+        Usuario usuario = usuarioDao.findByEmailAndPass(validarUsuarioRequest);
 
         return ValidarUsuarioResponse.builder()
-                .userId(usuario.getUserId())
+                .userId(usuario.getId())
                 .nameUser(usuario.getNameUser())
                 .lastName(usuario.getLastName())
                 .isActive(usuario.getIsActive())
@@ -38,7 +38,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Map<String, Boolean> guardar(RegistroUsuarioRequest registroUsuarioRequest) throws ResourceNotFoundException{
 
         Usuario usuario = new Usuario();
-        usuario.setPass(registroUsuarioRequest.getPass());
+        usuario.setPassword(registroUsuarioRequest.getPass());
         usuario.setNameUser(registroUsuarioRequest.getNameUser());
         usuario.setLastName(registroUsuarioRequest.getLastName());
         usuario.setIsActive(registroUsuarioRequest.getIsActive());

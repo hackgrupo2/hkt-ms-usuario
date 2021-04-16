@@ -6,8 +6,8 @@ import javax.persistence.*;
 @Table(name = "usuario", schema = "equipo2")
 public class Usuario {
 
-    private long userId;
-    private String pass;
+    private long id;
+    private String password;
     private String nameUser;
     private String lastName;
     private String isActive;
@@ -16,8 +16,8 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String pass, String nameUser, String lastName, String isActive, String email ) {
-        this.pass = pass;
+    public Usuario(String password, String nameUser, String lastName, String isActive, String email ) {
+        this.password = password;
         this.nameUser = nameUser;
         this.lastName = lastName;
         this.isActive = isActive;
@@ -26,26 +26,26 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getUserId() {
+    public long getId() {
 
-        return userId;
+        return id;
     }
-    public void setUserId(long userId) {
+    public void setId(long id) {
 
-        this.userId = userId;
-    }
-
-    @Column(name = "pass", nullable = false)
-    public String getPass() {
-
-        return pass;
-    }
-    public void setPass(String pass) {
-
-        this.pass = pass;
+        this.id = id;
     }
 
-    @Column(name = "nameUser", nullable = false)
+    @Column(name = "pass_user", nullable = false)
+    public String getPassword() {
+
+        return password;
+    }
+    public void setPassword(String password) {
+
+        this.password = password;
+    }
+
+    @Column(name = "name_user", nullable = false)
     public String getNameUser() {
         return nameUser;
     }
@@ -54,7 +54,7 @@ public class Usuario {
         this.nameUser = nameUser;
     }
 
-    @Column(name = "lastName", nullable = false)
+    @Column(name = "last_name", nullable = false)
     public String getLastName() {
         return lastName;
     }
@@ -63,7 +63,7 @@ public class Usuario {
         this.lastName = lastName;
     }
 
-    @Column(name = "isActive", nullable = false)
+    @Column(name = "is_active", nullable = false)
     public String getIsActive() {
         return isActive;
     }

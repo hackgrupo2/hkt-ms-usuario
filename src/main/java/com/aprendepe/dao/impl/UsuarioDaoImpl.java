@@ -2,6 +2,7 @@ package com.aprendepe.dao.impl;
 
 import com.aprendepe.dao.UsuarioDao;
 import com.aprendepe.exception.ResourceNotFoundException;
+import com.aprendepe.model.api.ValidarUsuarioRequest;
 import com.aprendepe.model.dao.Usuario;
 import com.aprendepe.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,15 @@ public class UsuarioDaoImpl implements UsuarioDao {
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public Usuario findById(Long userId) throws ResourceNotFoundException {
-        Usuario usuario = usuarioRepository.findById(userId)
+    public Usuario findByEmailAndPass(ValidarUsuarioRequest validarUsuarioRequest) throws ResourceNotFoundException {
+
+        Usuario validaUsuario = usuarioRepository.findByEmailAndPass(validarUsuarioRequest.getCorreo(),validarUsuarioRequest.getPassword());
+
+
+
+        Usuario usuario = usuarioRepository.findById(Long.parseLong("0"))
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Usuario no encontrado con este id :: " + userId));
+                        new ResourceNotFoundException("Usuario no encontrado con este id :: " + validarUsuarioRequest.getCorreo()));
         return usuario;
     }
 

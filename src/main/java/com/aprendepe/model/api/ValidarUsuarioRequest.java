@@ -7,8 +7,7 @@ import lombok.Getter;
 @Builder
 public class ValidarUsuarioRequest {
 
-    private Long id;
-    private String user;
-    private String pass;
+    private String correo;
+    private String password;
 
 }
