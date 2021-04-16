@@ -12,18 +12,16 @@ public class Usuario {
     private String lastName;
     private String isActive;
     private String email;
-    private String registration_date;
 
     public Usuario() {
     }
 
-    public Usuario(String pass, String nameUser, String lastName, String isActive, String email, String registration_date) {
+    public Usuario(String pass, String nameUser, String lastName, String isActive, String email ) {
         this.pass = pass;
         this.nameUser = nameUser;
         this.lastName = lastName;
         this.isActive = isActive;
         this.email = email;
-        this.registration_date = registration_date;
     }
 
     @Id
@@ -83,12 +81,5 @@ public class Usuario {
         this.email = email;
     }
 
-    @Column(name = "registration_date", nullable = false)
-    public String getRegistration_date() {
-        return registration_date;
-    }
 
-    public void setRegistration_date(String registration_date) {
-        this.registration_date = registration_date;
-    }
 }

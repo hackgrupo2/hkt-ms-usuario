@@ -5,13 +5,12 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class ValidarUsuarioResponse {
+public class RegistroUsuarioRequest {
 
-    private long userId;
+    private String pass;
     private String nameUser;
     private String lastName;
     private String isActive;
     private String email;
-    private String registration_date;
 
 }
